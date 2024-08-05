@@ -13,13 +13,12 @@ Projeyi kullanmak için aşağıdaki adımları izleyebilirsiniz:
 3. MATLAB'da `aircraftClassification.m` dosyasını açın.
 4. Dosyayı düzenleyerek veya doğrudan çalıştırarak modeli başlatın.
 5. Modelin başarımlarını ve sonuçlarını MATLAB komut penceresinde gözlemleyin.
-6. Deep Learning Toolbox'a ait Deep Network Designer uygulaması ile VGG-16 ağına erişim sağlanmıştır.
-7. Classification Learner uygulaması kullanılarak farklı sınıflandırma algoritmaları için model değerlendirmeleri yapılmıştır.
-8. Kodlar 4 bloğa ayrılmıştır.
-   1. **Özellik Çıkarma:** VGG-16 modelini kullanarak verilen bir dizindeki uçak görüntülerinden özellik çıkarımı yapar. Görüntüler önce tam boyutta alınır ve ardından her biri dört eşit büyüklükte parçaya bölünür. Her parça için özellikler çıkarılır ve bu özellikler daha sonra bir özellik matrisine (X) eklenir. Ayrıca her görüntüye bir sınıf etiketi (y) atanır.
-   2. **Özellik seçme:** özellik çıkarımının ardından özellik matrisi üzerinde PCA (Principal Component Analysis) analizi uygular. PCA, özellik matrisindeki boyutu azaltarak önemli özellikleri seçmeyi amaçlar. Daha sonra bu azaltılmış boyuttaki özellik matrisi (X_pca) ve etiket matrisi (y) kullanılarak LDA (Linear Discriminant Analysis) modeli eğitilir (fitcdiscr).
-   3. **Tekli test:** test görüntüsü (test.jpg) üzerinde önceden eğitilmiş VGG-16 ağıyla özellik çıkarımı yapar. Test görüntüsü, eğitimde kullanılan boyuta yeniden boyutlandırılır ve daha sonra dört parçaya bölünerek her bir parçadan özellikler çıkarılır. Bu özellikler daha sonra PCA kullanılarak azaltılır ve son olarak LDA modeli üzerinde sınıflandırma yapılır. Tahmin sonucu, etiketler listesinden ilgili sınıf ismi olarak ekrana yazdırılır.
-   4. **Toplu test:** TestAirCraft klasöründeki tüm JPG formatındaki test görüntülerini işler. Her bir görüntü, eğitimde kullanılan boyuta yeniden boyutlandırılır ve dört parçaya bölünerek her bir parçadan özellikler çıkarılır. Çıkarılan özellikler min-max normalizasyonu ile işlenir ve PCA kullanılarak boyut azaltma işlemi yapılır. Son olarak, LDA modeli kullanılarak her bir görüntü için sınıflandırma tahmini yapılır ve gerçek etiketlerle karşılaştırılır. Doğru tahminlerin sayısı hesaplanır ve doğruluk oranı görüntülenir.
+6. Classification Learner uygulaması kullanılarak farklı sınıflandırma algoritmaları için model değerlendirmeleri yapılmıştır.
+7. Kodlar 4 bloğa ayrılmıştır.
+   1. **Özellik Çıkarma:** VGG-16 modelini kullanarak uçak görüntülerinden özellik çıkarımı yapar. Görüntüler önce tam boyutta alınır ve ardından her biri dört eşit büyüklükte parçaya bölünür.
+   2. **Özellik seçme:** özellik çıkarımının ardından özellik matrisi üzerinde PCA (Principal Component Analysis) analizi uygular. 
+   3. **Tekli test:** test görüntüsü (test.jpg) üzerinde sınıflandırma testi gerçekleşir.
+   4. **Toplu test:** TestAirCraft klasöründeki tüm JPG formatındaki test görüntülerini işler.
 
 Detaylı yönergeler için dosya içindeki yorum satırlarını inceleyebilirsiniz.
 
@@ -60,7 +59,7 @@ Uçak türlerinin birbirinden ayırt edilmesi için önerilen bu derin öğrenme
     <p><strong>Cosine KNN</strong> sınıflandırma modeline ait Confusion Matrix</p>
 </div>
 
-- Veri setinin %20 validation set olarak kullanılması ile bu sonuçlar elde edilmiştir.
+- Bu sonuçlar, veri setinin %20'sinin doğrulama seti olarak kullanılmasıyla elde edilmiştir.
 
 ### Doğruluk oranları
 - **Cosine KNN** sınıflandırıcısı için %95.7
